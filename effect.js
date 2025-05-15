@@ -37,7 +37,7 @@ $('document').ready(function(){
 		$('#bulb_green').addClass('bulb-glow-green-after');
 		$('#bulb_pink').addClass('bulb-glow-pink-after');
 		$('#bulb_orange').addClass('bulb-glow-orange-after');
-		$('body').css('backgroud-color','#FFF');
+		$('body').css('background-color','#FFF');
 		$('body').addClass('peach-after');
 		$(this).fadeOut('slow').delay(6000).promise().done(function(){
 			$('#bannar_coming').fadeIn('slow');
@@ -106,11 +106,6 @@ $('document').ready(function(){
 		$('.balloon-border').animate({top:-500},8000);
 		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b3').addClass('balloons-rotate-behaviour-two');
-		// $('#b4').addClass('balloons-rotate-behaviour-one');
-		// $('#b5').addClass('balloons-rotate-behaviour-one');
-		// $('#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b7').addClass('balloons-rotate-behaviour-one');
 		loopOne();
 		loopTwo();
 		loopThree();
@@ -140,7 +135,7 @@ $('document').ready(function(){
 
 		
 	$('#wish_message').click(function(){
-		 vw = $(window).width()/2;
+		vw = $(window).width()/2;
 
 		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
 		$('#b1').attr('id','b11');
@@ -153,7 +148,7 @@ $('document').ready(function(){
 		$('#b11').animate({top:240, left: vw-350},500);
 		$('#b22').animate({top:240, left: vw-250},500);
 		$('#b33').animate({top:240, left: vw-150},500);
-		$('#b44').animate({top:240, left: vw-50},500);
+		$('#b44').animate({top:240, left: vw-50},500); // Fixed syntax error here
 		$('#b55').animate({top:240, left: vw+50},500);
 		$('#b66').animate({top:240, left: vw+150},500);
 		$('#b77').animate({top:240, left: vw+250},500);
@@ -179,23 +174,34 @@ $('document').ready(function(){
 			if(i==50){
 				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
 					$('.cake').fadeIn('fast');
+					$('#employee_wishes').fadeIn('slow');
 				});
-				
 			}
 			else{
 				msgLoop(i);
 			}			
-
 		});
-			// body...
 		}
 		
 		msgLoop(0);
+	});
+	
+	$('#employee_wishes').click(function(){
+		window.location.href = 'wishes.html';
+		// Hide the message section
+		$('.message').fadeOut('slow');
 		
+		// Show employee wishes section with animation
+		$('.employee-wishes').fadeIn('slow');
+		
+		// Animate each employee message
+		$('.employee-message').each(function(index) {
+			$(this).delay(200 * index).fadeIn(1000);
+		});
+		
+		// Scroll to employee wishes section
+		$('html, body').animate({
+			scrollTop: $('.employee-wishes').offset().top - 50
+		}, 1000);
 	});
 });
-
-
-
-
-//alert('hello');

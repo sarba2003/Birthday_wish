@@ -1299,8 +1299,52 @@ audio {
         color: #fff;
         background-color: #466baf;
     }
+	.employee-wishes {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 1s ease;
+	}
+	
+	.employee-wishes.show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	
+	.employee-message {
+		background: rgba(255, 255, 255, 0.9);
+		padding: 15px;
+		margin: 10px 0;
+		border-radius: 8px;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		transform: translateX(-100%);
+		transition: transform 0.5s ease;
+	}
+	
+	.employee-message.show {
+		transform: translateX(0);
+	}
+	
+	@media (max-width: 768px) {
+		.employee-message {
+			padding: 10px;
+			font-size: 14px;
+		}
+		
+		.final-message p {
+			font-size: 16px !important;
+		}
+	}
+.message p {
+    display: none;
+}
 
+.employee-message {
+    display: none;
+}
 
+.final-message {
+    display: none;
+}
 
     /*controlling tablet width*/
     /*@media only screen and (max-width: 720px){
